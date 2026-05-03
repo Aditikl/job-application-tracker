@@ -1,0 +1,26 @@
+name: Deploy Job Tracker App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest code
+        run: |
+          cd ~/job-application-tracker
+          git pull origin main
+
+      - name: Rebuild and restart containers
+        run: |
+          cd ~/job-application-tracker
+          docker-compose down
+          docker-compose up -d --build
+
+      - name: Check running containers
+        run: |
+          docker ps
