@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS jobtracker;
+
+USE jobtracker;
+
+CREATE TABLE IF NOT EXISTS jobs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    company VARCHAR(100),
+    role VARCHAR(100),
+    status VARCHAR(50)
+);
